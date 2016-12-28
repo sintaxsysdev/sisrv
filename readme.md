@@ -35,3 +35,5 @@ Eddy Loayza & Max Sullca
 E-mail: eddyloayz4@gmail.com, maxsullca@gmail.com
 
 Web: http://sintaxsys.com/
+
+## V1.0
