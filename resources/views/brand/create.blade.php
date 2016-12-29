@@ -8,14 +8,14 @@
                     <div class="panel-heading">Register</div>
                     <div class="panel-body">
 
-                        {!! Form::model($make, ['route' => ['makes.update', $make->id], 'method' => 'PUT']) !!}
+                        {!! Form::open(['route' => 'brand.store', 'method' => 'POST']) !!}
 
-                            @include('make.forms.mk')
+                            {!! Field::text('brand_name') !!}
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Actualizar
+                                        Guardar
                                     </button>
                                 </div>
                             </div>

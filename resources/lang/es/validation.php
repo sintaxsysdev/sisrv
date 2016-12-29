@@ -145,7 +145,7 @@ return [
         'subject'               => 'asunto',
         'message'               => 'mensaje',
 
-        'make_name'             => 'marca',
+        'brand_name'            => 'marca',
     ],
 
 ];
