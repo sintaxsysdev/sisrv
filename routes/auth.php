@@ -40,4 +40,4 @@ Route::post('makes/create', [
 
 */
 
-Route::resource('makes', 'MakeController');
+Route::resource('brand', 'BrandController');
