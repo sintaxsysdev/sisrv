@@ -42,6 +42,6 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
         $brand->delete();
-        return redirect()->route('makes.index');
+        return redirect()->route('brand.index');
     }
 }
