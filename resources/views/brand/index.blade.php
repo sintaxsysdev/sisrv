@@ -12,10 +12,10 @@
                         <table class="table" id="brand">
                             <thead>
                             <tr>
-                                <td>ID</td>
+                                <td>#</td>
                                 <td>Marca</td>
-                                <td>Editar</td>
-                                <td>Eliminar</td>
+                                <td>Creado</td>
+                                <td>Actualizado</td>
                             </tr>
                             </thead>
                         </table>
