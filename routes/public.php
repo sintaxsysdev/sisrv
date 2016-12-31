@@ -19,9 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+
+/*
+|--------------------------------------------------------------------------
+| Routes Brand
+|--------------------------------------------------------------------------
+*/
+
 Route::resource('brand', 'BrandController');
 
-Route::get('api/brand', function(){
-    // $posts = Post::orderBy('created_at', 'DESC')->paginate();
-    return Datatables::eloquent(App\Brand::query())->make(true);
-});
+Route::get('api/brands', 'BrandController@listing');

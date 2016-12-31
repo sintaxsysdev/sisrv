@@ -16,6 +16,7 @@
                                 <td>Marca</td>
                                 <td>Creado</td>
                                 <td>Actualizado</td>
+                                <td>Acciones</td>
                             </tr>
                             </thead>
                         </table>

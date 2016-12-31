@@ -93,17 +93,18 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#brand').DataTable( {
-            "order": [[ 0, "desc" ]],
+    $(document).ready(function () {
+        $('#brand').DataTable({
+            "order": [[0, "desc"]],
             "processing": true,
             "serverSide": true,
-            "ajax": "/api/brand",
-            "columns":[
-                {data: 'id'},
-                {data: 'brand_name'},
-                {data: 'created_at'},
-                {data: 'updated_at'},
+            "ajax": "/api/brands",
+            "columns": [
+                {data: 'id', name: 'id'},
+                {data: 'brand_name', name: 'brand_name'},
+                {data: 'created_at', name: 'created_at'},
+                {data: 'updated_at', name: 'updated_at'},
+                {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
     });

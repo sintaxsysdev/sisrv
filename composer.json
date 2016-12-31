@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "styde/html": "~1.2",
         "graham-campbell/markdown": "^7.0",
-        "yajra/laravel-datatables-oracle": "^6.22"
+        "yajra/laravel-datatables-oracle": "^6.22",
+        "jenssegers/date": "^3.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
