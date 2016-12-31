@@ -7,7 +7,9 @@ use Jenssegers\Date\Date;
 
 class Brand extends Model
 {
-    protected $fillable = ['brand_name'];
+    protected $fillable = [
+        'brand_name'
+    ];
 
     public function setBrandNameAttribute($value)
     {

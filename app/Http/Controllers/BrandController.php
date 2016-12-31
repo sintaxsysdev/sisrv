@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Http\Requests\BrandRequest;
-use App\Http\Requests\BrandRequestUpdate;
 use Exception;
 use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Facades\Datatables;
@@ -13,7 +12,12 @@ class BrandController extends Controller
 {
     public function listing()
     {
-        $brands = Brand::select(['id', 'brand_name', 'created_at', 'updated_at']);
+        $brands = Brand::select([
+            'id',
+            'brand_name',
+            'created_at',
+            'updated_at'
+        ]);
 
         return Datatables::of($brands)
             ->addColumn('action', function ($brand) {
@@ -30,9 +34,7 @@ class BrandController extends Controller
 
     public function index()
     {
-        $brands = Brand::all();
-
-        return view('brand.index', compact('brands'));
+        return view('brand.index');
     }
 
     public function create()
@@ -64,7 +66,7 @@ class BrandController extends Controller
         }
     }
 
-    public function update(BrandRequestUpdate $request, $id)
+    public function update(BrandRequest $request, $id)
     {
         try {
             $brand = Brand::findOrFail($id);
