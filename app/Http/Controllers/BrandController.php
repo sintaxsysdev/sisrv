@@ -42,19 +42,26 @@ class BrandController extends Controller
 
     public function store(BrandRequest $request)
     {
-        if (Brand::create($request->all())) {
-            Session::flash('success', '¡Marca agregado correctamente!');
+        try {
+            if (Brand::create($request->all())) {
+                Session::flash('success', '¡Marca agregado correctamente!');
+            }
+            return redirect()->route('brand.index');
+        } catch (Exception $e) {
+            Session::flash('error', '¡Marca no pudo ser agregada!');
+            return redirect()->route('brand.index');
         }
-
-        Session::flash('error', '¡Marca no agregado correctamente!');
-
-        return redirect()->route('brand.index');
     }
 
     public function edit($id)
     {
-        $brand = Brand::findOrFail($id);
-        return view('brand.edit', ['brand' => $brand]);
+        try {
+            $brand = Brand::findOrFail($id);
+            return view('brand.edit', ['brand' => $brand]);
+        } catch (Exception $e) {
+            Session::flash('error', '¡Marca no pudo ser encontrada!');
+            return redirect()->route('brand.index');
+        }
     }
 
     public function update(BrandRequestUpdate $request, $id)
@@ -67,7 +74,7 @@ class BrandController extends Controller
             }
             return redirect()->route('brand.index');
         } catch (Exception $e) {
-            Session::flash('error', '¡Marca no fue actualizado!');
+            Session::flash('error', '¡Marca no pudo ser actualizada!');
             return redirect()->route('brand.index');
         }
     }
