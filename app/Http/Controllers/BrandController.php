@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Http\Requests\BrandRequest;
+use App\Http\Requests\BrandRequestUpdate;
+use Exception;
 use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Facades\Datatables;
 
@@ -41,10 +43,10 @@ class BrandController extends Controller
     public function store(BrandRequest $request)
     {
         if (Brand::create($request->all())) {
-            Session::flash('success', '¡Agregado correctamente!');
+            Session::flash('success', '¡Marca agregado correctamente!');
         }
 
-        Session::flash('error', '¡Ha ocurrido un error!');
+        Session::flash('error', '¡Marca no agregado correctamente!');
 
         return redirect()->route('brand.index');
     }
@@ -55,12 +57,19 @@ class BrandController extends Controller
         return view('brand.edit', ['brand' => $brand]);
     }
 
-    public function update(BrandRequest $request, $id)
+    public function update(BrandRequestUpdate $request, $id)
     {
-        $brand = Brand::findOrFail($id);
-        $brand->fill($request->all());
-        $brand->save();
-        return redirect()->route('brand.index');
+        try {
+            $brand = Brand::findOrFail($id);
+            $brand->fill($request->all());
+            if ($brand->save()) {
+                Session::flash('success', '¡Marca actualizado correctamente!');
+            }
+            return redirect()->route('brand.index');
+        } catch (Exception $e) {
+            Session::flash('error', '¡Marca no fue actualizado!');
+            return redirect()->route('brand.index');
+        }
     }
 
     public function destroy($id)
