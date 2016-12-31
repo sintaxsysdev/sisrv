@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Http\Requests\BrandRequest;
+use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Facades\Datatables;
 
 class BrandController extends Controller
@@ -39,7 +40,12 @@ class BrandController extends Controller
 
     public function store(BrandRequest $request)
     {
-        Brand::create($request->all());
+        if (Brand::create($request->all())) {
+            Session::flash('success', '¡Agregado correctamente!');
+        }
+
+        Session::flash('error', '¡Ha ocurrido un error!');
+
         return redirect()->route('brand.index');
     }
 

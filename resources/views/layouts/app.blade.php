@@ -10,11 +10,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
+    <!-- Styles & Toastr -->
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- DataTables -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -87,11 +87,15 @@
     @yield('content')
 </div>
 
-<!-- Scripts -->
+<!-- Scripts & Toastr -->
 <script src="/js/app.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- Toastr messages -->
+@include('partials.session-messages')
+
+<!-- Datatables -->
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('#brand').DataTable({
