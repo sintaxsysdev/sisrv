@@ -21,7 +21,7 @@ class BrandController extends Controller
 
         return Datatables::of($brands)
             ->addColumn('action', function ($brand) {
-                return '<a href="brand/' . $brand->id . '/edit">Editar</a>';
+                return '<a href="brand/' . $brand->id . '/edit">Edit</a> <button type="button" value="' . $brand->id . '" onclick="ConfirmDeleteMake(this);" data-toggle="modal" data-target="#modalQuestion">Delete</button>';
             })
             ->editColumn('created_at', function ($brand) {
                 return $brand->created_at->toFormattedDateString();
@@ -85,6 +85,5 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
         $brand->delete();
-        return redirect()->route('brand.index');
     }
 }
