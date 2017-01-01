@@ -43,14 +43,22 @@
 
         function DeleteMake(btn) {
             'use strict';
-            var route = "brand/delete/" + btn.value;
+            var route = "brand/" + btn.value;
             var token = $("#token").val();
             $.ajax({
                 url: route,
-                success: function () {
+                headers: {
+                    'X-CSRF-TOKEN': token
+                },
+                type: 'DELETE',
+                dataType: 'json',
+                success: function (msg) {
                     $("#modalQuestion").modal('toggle');
                     ReloadMakeDataTableInPagination('#brand');
-                    toastr.success("¡Marca eliminado correctamente!")
+                    toastr.success(msg.message)
+                },
+                error: function (msg) {
+                    toastr.error('¡Marca no pudo ser eliminada!')
                 }
             });
         }

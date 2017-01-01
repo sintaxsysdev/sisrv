@@ -21,7 +21,8 @@ class BrandController extends Controller
 
         return Datatables::of($brands)
             ->addColumn('action', function ($brand) {
-                return '<a href="brand/' . $brand->id . '/edit">Edit</a> <button type="button" value="' . $brand->id . '" onclick="ConfirmDeleteMake(this);" data-toggle="modal" data-target="#modalQuestion">Delete</button>';
+                return '<a href="brand/' . $brand->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
+                <button type="button" class="btn btn-danger btn-xs" value="' . $brand->id . '" onclick="ConfirmDeleteMake(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
             })
             ->editColumn('created_at', function ($brand) {
                 return $brand->created_at->toFormattedDateString();
@@ -46,13 +47,18 @@ class BrandController extends Controller
     {
         try {
             if (Brand::create($request->all())) {
-                Session::flash('success', '¡Marca agregado correctamente!');
+                Session::flash('success', '¡Marca agregada correctamente!');
             }
             return redirect()->route('brand.index');
         } catch (Exception $e) {
             Session::flash('error', '¡Marca no pudo ser agregada!');
             return redirect()->route('brand.index');
         }
+    }
+
+    public function show()
+    {
+        return redirect()->route('brand.index');
     }
 
     public function edit($id)
@@ -72,7 +78,7 @@ class BrandController extends Controller
             $brand = Brand::findOrFail($id);
             $brand->fill($request->all());
             if ($brand->save()) {
-                Session::flash('success', '¡Marca actualizado correctamente!');
+                Session::flash('success', '¡Marca actualizada correctamente!');
             }
             return redirect()->route('brand.index');
         } catch (Exception $e) {
@@ -85,5 +91,9 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
         $brand->delete();
+
+        return response()->json([
+            'message' => '¡Marca eliminada correctamente!'
+        ]);
     }
 }

@@ -27,10 +27,4 @@ Route::get('/home', 'HomeController@index');
 */
 
 Route::resource('brand', 'BrandController');
-
 Route::get('api/brands', 'BrandController@listing');
-
-Route::get('brand/delete/{brand}', [
-    'as' => 'brand.delete',
-    'uses' => 'BrandController@destroy'
-]);

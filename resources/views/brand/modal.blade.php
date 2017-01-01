@@ -9,6 +9,7 @@
                 <p class="text-center">¿Está Ud. seguro de eliminar el registro?</p>
             </div>
             <div class="modal-footer">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                 <button id="deleteMake" value="" onclick="DeleteMake(this);" type="button" class="btn btn-primary pull-left">Si, eliminar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">No, cancelar</button>
             </div>
