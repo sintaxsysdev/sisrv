@@ -2,23 +2,23 @@
 
 @section('content')
 
+    @include('brand.modal')
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register <a href="{!! URL::to('/brand/create') !!}">+ Agregar</a></div>
+                    <div class="panel-heading">Register <a href="{{ URL::to('/brand/create') }}">+ Agregar</a></div>
                     <div class="panel-body">
 
-                        @include('brand.modal')
-
-                        <table class="table" id="brand">
+                        <table class="table table-striped table-bordered table-condensed" id="brand">
                             <thead>
                             <tr>
-                                <td>#</td>
-                                <td>Marca</td>
-                                <td>Creado</td>
-                                <td>Actualizado</td>
-                                <td>Acciones</td>
+                                <th>#</th>
+                                <th>Marca</th>
+                                <th>Creado</th>
+                                <th>Actualizado</th>
+                                <th>Acciones</th>
                             </tr>
                             </thead>
                         </table>
@@ -29,40 +29,25 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    {{ Html::script('sisrv/js/brand.js') }}
     <script>
-        function ConfirmDeleteMake(btn) {
-            'use strict';
-            $("#deleteMake").val(btn.value);
-        }
-
-        function ReloadMakeDataTableInPagination(id) {
-            'use strict';
-            var dataTable = $(id).DataTable();
-            dataTable.ajax.reload(null, false);
-        }
-
-        function DeleteMake(btn) {
-            'use strict';
-            var route = "brand/" + btn.value;
-            var token = $("#token").val();
-            $.ajax({
-                url: route,
-                headers: {
-                    'X-CSRF-TOKEN': token
-                },
-                type: 'DELETE',
-                dataType: 'json',
-                success: function (msg) {
-                    $("#modalQuestion").modal('toggle');
-                    ReloadMakeDataTableInPagination('#brand');
-                    toastr.success(msg.message)
-                },
-                error: function (msg) {
-                    toastr.error('¡Marca no pudo ser eliminada!')
-                }
+        $(document).ready(function () {
+            $('#brand').DataTable({
+                "order": [[0, "desc"]],
+                "processing": true,
+                "serverSide": true,
+                "ajax": '{{ URL::to('/api/brands') }}',
+                "columns": [
+                    {data: 'id', name: 'id'},
+                    {data: 'brand_name', name: 'brand_name'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
             });
-        }
+        });
     </script>
-
-
 @endsection

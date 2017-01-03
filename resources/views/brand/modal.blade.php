@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                <button id="deleteMake" value="" onclick="DeleteMake(this);" type="button" class="btn btn-primary pull-left">Si, eliminar</button>
+                <button id="deleteBrand" value="" onclick="DeleteBrand(this);" type="button" class="btn btn-primary pull-left">Si, eliminar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">No, cancelar</button>
             </div>
         </div>

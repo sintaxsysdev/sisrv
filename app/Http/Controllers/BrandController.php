@@ -22,7 +22,7 @@ class BrandController extends Controller
         return Datatables::of($brands)
             ->addColumn('action', function ($brand) {
                 return '<a href="brand/' . $brand->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
-                <button type="button" class="btn btn-danger btn-xs" value="' . $brand->id . '" onclick="ConfirmDeleteMake(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
+                <button type="button" class="btn btn-danger btn-xs" value="' . $brand->id . '" onclick="confirmDeleteBrand(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
             })
             ->editColumn('created_at', function ($brand) {
                 return $brand->created_at->toFormattedDateString();
@@ -89,11 +89,16 @@ class BrandController extends Controller
 
     public function destroy($id)
     {
-        $brand = Brand::findOrFail($id);
-        $brand->delete();
-
-        return response()->json([
-            'message' => '¡Marca eliminada correctamente!'
-        ]);
+        try {
+            $brand = Brand::findOrFail($id);
+            if ($brand->delete()) {
+                return response()->json([
+                    'message' => '¡Marca eliminada correctamente!'
+                ]);
+            }
+        } catch (Exception $e) {
+            Session::flash('error', '¡Marca no pudo ser eliminada!');
+            return redirect()->route('brand.index');
+        }
     }
 }
