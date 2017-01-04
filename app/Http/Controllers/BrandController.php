@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Http\Requests\BrandRequest;
-use Exception;
 use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Facades\Datatables;
 
