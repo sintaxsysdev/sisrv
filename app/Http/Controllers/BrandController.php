@@ -45,15 +45,11 @@ class BrandController extends Controller
 
     public function store(BrandRequest $request)
     {
-        try {
-            if (Brand::create($request->all())) {
-                Session::flash('success', '¡Marca agregada correctamente!');
-            }
-            return redirect()->route('brand.index');
-        } catch (Exception $e) {
-            Session::flash('error', '¡Marca no pudo ser agregada!');
-            return redirect()->route('brand.index');
-        }
+        Brand::create($request->all());
+
+        Session::flash('success', '¡Marca agregada correctamente!');
+
+        return redirect()->route('brand.index');
     }
 
     public function show()
@@ -63,42 +59,32 @@ class BrandController extends Controller
 
     public function edit($id)
     {
-        try {
-            $brand = Brand::findOrFail($id);
-            return view('brand.edit', ['brand' => $brand]);
-        } catch (Exception $e) {
-            Session::flash('error', '¡Marca no pudo ser encontrada!');
-            return redirect()->route('brand.index');
-        }
+        $brand = Brand::findOrFail($id);
+
+        return view('brand.edit', ['brand' => $brand]);
     }
 
     public function update(BrandRequest $request, $id)
     {
-        try {
-            $brand = Brand::findOrFail($id);
-            $brand->fill($request->all());
-            if ($brand->save()) {
-                Session::flash('success', '¡Marca actualizada correctamente!');
-            }
-            return redirect()->route('brand.index');
-        } catch (Exception $e) {
-            Session::flash('error', '¡Marca no pudo ser actualizada!');
-            return redirect()->route('brand.index');
-        }
+        $brand = Brand::findOrFail($id);
+
+        $brand->fill($request->all());
+
+        $brand->save();
+
+        Session::flash('success', '¡Marca actualizada correctamente!');
+
+        return redirect()->route('brand.index');
     }
 
     public function destroy($id)
     {
-        try {
-            $brand = Brand::findOrFail($id);
-            if ($brand->delete()) {
-                return response()->json([
-                    'message' => '¡Marca eliminada correctamente!'
-                ]);
-            }
-        } catch (Exception $e) {
-            Session::flash('error', '¡Marca no pudo ser eliminada!');
-            return redirect()->route('brand.index');
-        }
+        $brand = Brand::findOrFail($id);
+
+        $brand->delete();
+
+        return response()->json([
+            'message' => '¡Marca eliminada correctamente!'
+        ]);
     }
 }

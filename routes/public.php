@@ -22,9 +22,28 @@ Route::get('/home', 'HomeController@index');
 
 /*
 |--------------------------------------------------------------------------
-| Routes Brand
+| Routes Brands
 |--------------------------------------------------------------------------
 */
 
 Route::resource('brand', 'BrandController');
 Route::get('api/brands', 'BrandController@listing');
+
+/*
+|--------------------------------------------------------------------------
+| Routes Measures
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('measure', 'MeasureController');
+Route::get('api/measures', 'MeasureController@listing');
+
+/*
+|--------------------------------------------------------------------------
+| Routes Suppliers
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('supplier', 'SupplierController');
+Route::get('api/suppliers', 'SupplierController@listing');
+

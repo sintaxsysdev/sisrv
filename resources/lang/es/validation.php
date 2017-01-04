@@ -146,6 +146,15 @@ return [
         'message'               => 'mensaje',
 
         'brand_name'            => 'marca',
+        'measure_name'          => 'unidad de medida',
+
+        'supplier_ruc'          => 'Ruc',
+        'supplier_businessname' => 'Nombre / Razón Social',
+        'supplier_legaladdress' => 'Dirección del Domicilio Fiscal',
+        'supplier_city'         => 'Ciudad',
+        'supplier_phone'        => 'Teléfono',
+        'supplier_email'        => 'Correo electrónico',
+        'supplier_observation'  => 'Observación',
     ],
 
 ];
