@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('brand.modal')
+    @include('partials.modalQuestion')
 
     <div class="container">
         <div class="row">
@@ -11,7 +11,7 @@
                     <div class="panel-heading">Register <a href="{{ URL::to('/brand/create') }}">+ Agregar</a></div>
                     <div class="panel-body">
 
-                        <table class="table table-striped table-bordered table-condensed" id="brand">
+                        <table class="table table-striped table-bordered table-condensed" id="brands">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -35,7 +35,7 @@
     {{ Html::script('sisrv/js/brand.js') }}
     <script>
         $(document).ready(function () {
-            $('#brand').DataTable({
+            $('#brands').DataTable({
                 "order": [[0, "desc"]],
                 "processing": true,
                 "serverSide": true,

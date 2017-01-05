@@ -2,18 +2,18 @@
  * Created by Eddy on 4/01/2017.
  */
 
-function ReloadSupplierDataTableInPagination(id) {
+function ReloadDataTable() {
     'use strict';
-    var dataTable = $(id).DataTable();
+    var dataTable = $('#suppliers').DataTable();
     dataTable.ajax.reload(null, false);
 }
 
-function confirmDeleteSupplier(btn) {
+function confirmDelete(btn) {
     'use strict';
-    $("#deleteSupplier").val(btn.value);
+    $("#deleteRow").val(btn.value);
 }
 
-function DeleteSupplier(btn) {
+function DeleteRow(btn) {
     'use strict';
     var route = "supplier/" + btn.value;
     var token = $("#token").val();
@@ -26,11 +26,11 @@ function DeleteSupplier(btn) {
         dataType: 'json',
         success: function (msg) {
             $("#modalQuestion").modal('toggle');
-            ReloadSupplierDataTableInPagination('#suppliers');
+            ReloadDataTable();
             toastr.success(msg.message);
         },
         error: function (msg) {
-            ReloadSupplierDataTableInPagination('#suppliers');
+            ReloadDataTable();
             toastr.error('¡Proveedor no pudo ser eliminado!');
         }
     });

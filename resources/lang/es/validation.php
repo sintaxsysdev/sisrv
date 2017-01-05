@@ -146,15 +146,28 @@ return [
         'message'               => 'mensaje',
 
         'brand_name'            => 'marca',
+
         'measure_name'          => 'unidad de medida',
 
-        'supplier_ruc'          => 'Ruc',
-        'supplier_businessname' => 'Nombre / Razón Social',
-        'supplier_legaladdress' => 'Dirección del Domicilio Fiscal',
-        'supplier_city'         => 'Ciudad',
-        'supplier_phone'        => 'Teléfono',
-        'supplier_email'        => 'Correo electrónico',
-        'supplier_observation'  => 'Observación',
+        'supplier_ruc'          => 'ruc',
+        'supplier_businessname' => 'nombre / razón social',
+        'supplier_legaladdress' => 'dirección del domicilio fiscal',
+        'supplier_city'         => 'ciudad',
+        'supplier_phone'        => 'teléfono',
+        'supplier_email'        => 'correo electrónico',
+        'supplier_observation'  => 'observación',
+
+        'category_name'         => 'categoría',
+        'category_description'  => 'descripción',
+
+        'customer_ruc_dni'      => 'ruc / dni',
+        'customer_businessname' => 'nombre / razón social',
+        'customer_phone'        => 'teléfono',
+        'customer_email'        => 'correo electrónico',
+        'customer_address'      => 'dirección de su domicilio',
+        'customer_city'         => 'ciudad',
+        'customer_observation'  => 'observación',
+
     ],
 
 ];

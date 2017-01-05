@@ -21,7 +21,7 @@ class MeasureController extends Controller
         return Datatables::of($measures)
             ->addColumn('action', function ($measure) {
                 return '<a href="measure/' . $measure->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
-                <button type="button" class="btn btn-danger btn-xs" value="' . $measure->id . '" onclick="confirmDeleteMeasure(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
+                <button type="button" class="btn btn-danger btn-xs" value="' . $measure->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
             })
             ->editColumn('created_at', function ($measure) {
                 return $measure->created_at->toFormattedDateString();

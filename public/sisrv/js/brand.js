@@ -1,19 +1,19 @@
 /**
- * Created by edyde on 3/01/2017.
+ * Created by Eddy on 3/01/2017.
  */
 
-function ReloadBrandDataTableInPagination(id) {
+function ReloadDataTable() {
     'use strict';
-    var dataTable = $(id).DataTable();
+    var dataTable = $('#brands').DataTable();
     dataTable.ajax.reload(null, false);
 }
 
-function confirmDeleteBrand(btn) {
+function confirmDelete(btn) {
     'use strict';
-    $("#deleteBrand").val(btn.value);
+    $("#deleteRow").val(btn.value);
 }
 
-function DeleteBrand(btn) {
+function DeleteRow(btn) {
     'use strict';
     var route = "brand/" + btn.value;
     var token = $("#token").val();
@@ -26,11 +26,11 @@ function DeleteBrand(btn) {
         dataType: 'json',
         success: function (msg) {
             $("#modalQuestion").modal('toggle');
-            ReloadBrandDataTableInPagination('#brand');
+            ReloadDataTable();
             toastr.success(msg.message);
         },
         error: function (msg) {
-            ReloadBrandDataTableInPagination('#brand');
+            ReloadDataTable();
             toastr.error('¡Marca no pudo ser eliminada!');
         }
     });

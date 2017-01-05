@@ -21,7 +21,7 @@ class BrandController extends Controller
         return Datatables::of($brands)
             ->addColumn('action', function ($brand) {
                 return '<a href="brand/' . $brand->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
-                <button type="button" class="btn btn-danger btn-xs" value="' . $brand->id . '" onclick="confirmDeleteBrand(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
+                <button type="button" class="btn btn-danger btn-xs" value="' . $brand->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
             })
             ->editColumn('created_at', function ($brand) {
                 return $brand->created_at->toFormattedDateString();

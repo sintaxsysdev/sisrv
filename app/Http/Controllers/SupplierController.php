@@ -23,7 +23,7 @@ class SupplierController extends Controller
             ->addColumn('action', function ($supplier) {
                 return '<a href="supplier/' . $supplier->id . '" class="btn btn-warning btn-xs">O</a> 
                 <a href="supplier/' . $supplier->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
-                <button type="button" class="btn btn-danger btn-xs" value="' . $supplier->id . '" onclick="confirmDeleteSupplier(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
+                <button type="button" class="btn btn-danger btn-xs" value="' . $supplier->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
             })
             ->make(true);
     }

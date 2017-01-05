@@ -19,6 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+/*
+|--------------------------------------------------------------------------
+| Routes Category
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('category', 'CategoryController');
+Route::get('api/categories', 'CategoryController@listing');
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +54,13 @@ Route::get('api/measures', 'MeasureController@listing');
 
 Route::resource('supplier', 'SupplierController');
 Route::get('api/suppliers', 'SupplierController@listing');
+
+/*
+|--------------------------------------------------------------------------
+| Routes Customers
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('customer', 'CustomerController');
+Route::get('api/customers', 'CustomerController@listing');
 

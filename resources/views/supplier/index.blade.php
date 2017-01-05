@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('supplier.modal')
+    @include('partials.modalQuestion')
 
     <div class="container">
         <div class="row">

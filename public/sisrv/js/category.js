@@ -1,10 +1,10 @@
 /**
- * Created by Eddy on 3/01/2017.
+ * Created by Eddy on 4/01/2017.
  */
 
 function ReloadDataTable() {
     'use strict';
-    var dataTable = $('#measures').DataTable();
+    var dataTable = $('#categories').DataTable();
     dataTable.ajax.reload(null, false);
 }
 
@@ -15,7 +15,7 @@ function confirmDelete(btn) {
 
 function DeleteRow(btn) {
     'use strict';
-    var route = "measure/" + btn.value;
+    var route = "category/" + btn.value;
     var token = $("#token").val();
     $.ajax({
         url: route,
@@ -31,7 +31,7 @@ function DeleteRow(btn) {
         },
         error: function (msg) {
             ReloadDataTable();
-            toastr.error('¡Medida no pudo ser eliminada!');
+            toastr.error('¡Categoría no pudo ser eliminada!');
         }
     });
 }
