@@ -168,6 +168,10 @@ return [
         'customer_city'         => 'ciudad',
         'customer_observation'  => 'observación',
 
+        'warehouse_name'        => 'nombre del almacén',
+        'warehouse_description' => 'descripción',
+        'warehouse_status'      => 'almacén activo',
+
     ],
 
 ];

@@ -64,3 +64,12 @@ Route::get('api/suppliers', 'SupplierController@listing');
 Route::resource('customer', 'CustomerController');
 Route::get('api/customers', 'CustomerController@listing');
 
+/*
+|--------------------------------------------------------------------------
+| Routes Warehouse
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('warehouse', 'WarehouseController');
+route::get('api/warehouses', 'WarehouseController@listing');
+
