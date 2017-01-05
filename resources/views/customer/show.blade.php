@@ -5,49 +5,49 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register <a href="{{ URL::to('/supplier/' . $supplier->id . '/edit') }}">+
+                    <div class="panel-heading">Register <a href="{{ URL::to('/customer/' . $customer->id . '/edit') }}">+
                             Editar</a></div>
                     <div class="panel-body">
 
                         <table class="table table-striped table-bordered table-condensed">
                             <tr>
-                                <td colspan="2">Datos generales : proveedor</td>
+                                <td colspan="2">Datos generales : cliente</td>
                             </tr>
                             <tr>
-                                <td>Ruc:</td>
-                                <td>{!! $supplier->supplier_ruc !!}</td>
+                                <td>Ruc / Dni:</td>
+                                <td>{!! $customer->customer_ruc_dni !!}</td>
                             </tr>
                             <tr>
                                 <td>Nombre / Razón Social:</td>
-                                <td>{!! $supplier->supplier_businessname !!}</td>
-                            </tr>
-                            <tr>
-                                <td>Dirección del Domicilio Fiscal</td>
-                                <td>{!! $supplier->supplier_legaladdress !!}</td>
-                            </tr>
-                            <tr>
-                                <td>Ciudad</td>
-                                <td>{!! $supplier->supplier_city !!}</td>
+                                <td>{!! $customer->customer_businessname !!}</td>
                             </tr>
                             <tr>
                                 <td>Teléfono:</td>
-                                <td>{!! $supplier->supplier_phone !!}</td>
+                                <td>{!! $customer->customer_phone !!}</td>
                             </tr>
                             <tr>
-                                <td>Correo electrónico</td>
-                                <td>{!! $supplier->supplier_email !!}</td>
+                                <td>Correo electrónico:</td>
+                                <td>{!! $customer->customer_email !!}</td>
                             </tr>
                             <tr>
-                                <td>Observación</td>
-                                <td>{!! $supplier->supplier_observation !!}</td>
+                                <td>Dirección de su domicilio:</td>
+                                <td>{!! $customer->customer_address !!}</td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad:</td>
+                                <td>{!! $customer->customer_city !!}</td>
+                            </tr>
+                            <tr>
+                                <td>Observación:</td>
+                                <td>{!! $customer->customer_observation !!}</td>
                             </tr>
                             <tr>
                                 <td>Creado:</td>
-                                <td>{!! $supplier->created_at->toFormattedDateString() !!}</td>
+                                <td>{!! $customer->created_at->toFormattedDateString() !!}</td>
                             </tr>
                             <tr>
                                 <td>Actualizado:</td>
-                                <td>{!! $supplier->updated_at->toFormattedDateString() !!}</td>
+                                <td>{!! $customer->updated_at->toFormattedDateString() !!}</td>
                             </tr>
                         </table>
 

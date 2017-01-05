@@ -21,7 +21,8 @@ class CustomerController extends Controller
 
         return Datatables::of($customers)
             ->addColumn('action', function ($customer) {
-                return '<a href="customer/' . $customer->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
+                return '<a href="customer/' . $customer->id . '" class="btn btn-warning btn-xs">O</a>
+                <a href="customer/' . $customer->id . '/edit" class="btn btn-primary btn-xs">✓</a> 
                 <button type="button" class="btn btn-danger btn-xs" value="' . $customer->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion">✗</button>';
             })
             ->make(true);
@@ -50,7 +51,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id);
 
-        return view('customer.edit', ['customer' => $customer]);
+        return view('customer.show', ['customer' => $customer]);
     }
 
     public function edit($id)
